@@ -3,16 +3,20 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css']
+  styleUrls: ['./main.component.css'],
 })
 export class MainComponent implements OnInit {
-  public test : string ;
-  getMovie(movieTitle : string) : string{
-    return "cherche le film " + movieTitle  ; 
-  }
-  constructor(userService : ) { }
+  public test: string;
 
-  ngOnInit() {
+  notifyUser(item: string): void {
+    console.log(item);
   }
 
+  getMoviesByTitleInServer(movieTitle : string){
+    
+  }
+
+  constructor() {}
+
+  ngOnInit() {}
 }

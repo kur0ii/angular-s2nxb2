@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { MovieService } from '../movie.service'
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { MovieService } from '../movie.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,12 +8,14 @@ import { MovieService } from '../movie.service'
 })
 export class NavbarComponent implements OnInit {
   input: string = '';
-  @Input()
-  movieTitle : string ; 
+  @Output()
+  newItemEvent = new EventEmitter<string>()
   
-  onEnter() {
-    this.movieService
+  addNewItem(value : string) {
+    this.newItemEvent.emit(value)
   }
+    
+  onEnter() {}
 
   constructor() {}
 
