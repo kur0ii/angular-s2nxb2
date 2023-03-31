@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-  
+  public test : string ;
   getMovie(movieTitle : string) : string{
     return "cherche le film " + movieTitle  ; 
   }
