@@ -11,7 +11,7 @@ export class MovieListComponent implements OnInit {
   movieService: MovieService;
   response: SearchResponse;
 
-  getFullInfo (title : string ) {
+  getFullInformation (title : string ) {
     this.movieService.getShortInformation(title).subscribe((response) => {
       this.response = response;
       console.log('--------------------------------');
