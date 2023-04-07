@@ -8,16 +8,21 @@ import { MovieService } from '../movie.service';
   styleUrls: ['./main.component.css'],
 })
 export class MainComponent implements OnInit {
-  public test: string;
   movieService: MovieService;
   response: SearchResponse;
 
   notifyUser(item: string): void {
     console.log('looking for : ' + item);
-    this.movieService.getMoviesByTitle(item).subscribe((response) => {
+    /*
+    this.movieService.getShortInformation(item).subscribe((response) => {
       this.response = response;
+      console.log('--------------------------------');
+      for (var val of this.response.Search) {
+        console.log('response : ' + val.Title);
+      }
+      console.log('--------------------------------');
     });
-    console.log('response : ' + this.response.Search[0].Title);
+    */
   }
 
   getMoviesByTitleInServer(movieTitle: string) {}

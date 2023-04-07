@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { SearchResponse } from '../model';
+import { MovieFullInformations, SearchResponse } from '../model';
 
 @Injectable({
   providedIn: 'root',
@@ -9,9 +9,14 @@ import { SearchResponse } from '../model';
 export class MovieService {
   constructor(private httpClient: HttpClient) {}
 
-  getMoviesByTitle(movieTitle: string): Observable<SearchResponse> {
+  getShortInformation(movieTitle: string): Observable<SearchResponse> {
     return this.httpClient.get<SearchResponse>(
       'https://www.omdbapi.com/?apikey=c6ac85b1&s=' + movieTitle
+    );
+  }
+  getFullInformation(id: string): Observable<MovieFullInformations> {
+    return this.httpClient.get<MovieFullInformations>(
+      'https://www.omdbapi.com/?apikey=c6ac85b1&i=' + id
     );
   }
 }
