@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SearchResponse } from '../../model';
+import { MovieService } from '../movie.service';
 
 @Component({
   selector: 'app-main',
@@ -7,16 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
   public test: string;
+  movieService: MovieService;
+  response: SearchResponse;
 
   notifyUser(item: string): void {
-    console.log(item);
+    console.log('looking for : ' + item);
+    this.movieService.getMoviesByTitle(item).subscribe((response) => {
+      this.response = response;
+    });
+    console.log('response : ' + this.response.Search[0].Title);
   }
 
-  getMoviesByTitleInServer(movieTitle : string){
-    
-  }
+  getMoviesByTitleInServer(movieTitle: string) {}
 
-  constructor() {}
+  constructor(movieService: MovieService) {
+    this.movieService = movieService;
+  }
 
   ngOnInit() {}
 }
